@@ -32,11 +32,11 @@ if(isset($_GET['logoff']))
     $_SESSION = array();
     session_destroy();
     
-    header("Location: demo.php");
+    header("Location: index.php");
     exit;
 }
 
-if($_POST['submit']=='Login')
+if($_POST['submit']=='Entrar')
 {
     // Checking whether the Login form has been submitted
     
@@ -44,60 +44,61 @@ if($_POST['submit']=='Login')
     // Will hold our errors
     
     
-    if(!$_POST['username'] || !$_POST['password'])
-        $err[] = 'All the fields must be filled in!';
+    if(!$_POST['usuario'] || !$_POST['password'])
+        $err[] = '!Todos los campos deben ser llenados!';
     
     if(!count($err))
     {
-        $_POST['username'] = mysql_real_escape_string($_POST['username']);
+        $_POST['usuario'] = mysql_real_escape_string($_POST['usuario']);
         $_POST['password'] = mysql_real_escape_string($_POST['password']);
         $_POST['rememberMe'] = (int)$_POST['rememberMe'];
         
         // Escaping all input data
 
-        $row = mysql_fetch_assoc(mysql_query("SELECT id,usr FROM tz_members WHERE usr='{$_POST['username']}' AND pass='".md5($_POST['password'])."'"));
+        $row = mysql_fetch_assoc(mysql_query("SELECT id,usuario,estatus FROM usuarios WHERE usuario='{$_POST['usuario']}' AND clave='".md5($_POST['password'])."'"));
 
-        if($row['usr'])
+        if($row['usuario'])
         {
             // If everything is OK login
             
-            $_SESSION['usr']=$row['usr'];
+            $_SESSION['usuario']=$row['usuario'];
             $_SESSION['id'] = $row['id'];
+            $_SESSION['estatus'] = $row['estatus'];
             $_SESSION['rememberMe'] = $_POST['rememberMe'];
             
             // Store some data in the session
             
             setcookie('tzRemember',$_POST['rememberMe']);
         }
-        else $err[]='Wrong username and/or password!';
+        else $err[]='Usuario o contraseña, incorrecta.';
     }
     
     if($err)
     $_SESSION['msg']['login-err'] = implode('<br />',$err);
     // Save the error messages in the session
 
-    header("Location: demo.php");
+    header("Location: index.php");
     exit;
 }
-else if($_POST['submit']=='Register')
+else if($_POST['submit']=='Regístrarse')
 {
     // If the Register form has been submitted
     
     $err = array();
     
-    if(strlen($_POST['username'])<4 || strlen($_POST['username'])>32)
+    if(strlen($_POST['usuario'])<4 || strlen($_POST['usuario'])>32)
     {
-        $err[]='Your username must be between 3 and 32 characters!';
+        $err[]='¡Su nombre de usuario debe tener entre 3 y 32 caracteres!';
     }
     
-    if(preg_match('/[^a-z0-9\-\_\.]+/i',$_POST['username']))
+    if(preg_match('/[^a-z0-9\-\_\.]+/i',$_POST['usuario']))
     {
-        $err[]='Your username contains invalid characters!';
+        $err[]='¡Su nombre de usuario contiene caracteres no válidos!';
     }
     
     if(!checkEmail($_POST['email']))
     {
-        $err[]='Your email is not valid!';
+        $err[]='¡Su email no es valido!';
     }
     
     if(!count($err))
@@ -108,31 +109,34 @@ else if($_POST['submit']=='Register')
         // Generate a random password
         
         $_POST['email'] = mysql_real_escape_string($_POST['email']);
-        $_POST['username'] = mysql_real_escape_string($_POST['username']);
+        $_POST['usuario'] = mysql_real_escape_string($_POST['usuario']);
         // Escape the input data
         
-        
-        mysql_query("   INSERT INTO tz_members(usr,pass,email,regIP,dt)
+        $a= mysql_query("INSERT INTO usuarios(id,email,usuario,clave,razon,telefono,sexo,pais,estatus)
                         VALUES(
-                        
-                            '".$_POST['username']."',
-                            '".md5($pass)."',
+                            '',
                             '".$_POST['email']."',
-                            '".$_SERVER['REMOTE_ADDR']."',
-                            NOW()
-                            
+                            '".$_POST['usuario']."',
+                            '".md5($_POST['password'])."',
+                            '".$_POST['razon']."',
+                            '".$_POST['telefono']."',
+                            '".$_POST['sexo']."',
+                            '".$_POST['pais']."',
+                            '0'
                         )");
+
         
         if(mysql_affected_rows($link)==1)
         {
-            send_mail(  'demo-test@tutorialzine.com',
+            send_mail(  'jhonshark@gmail.com',
                         $_POST['email'],
                         'Registration System Demo - Your New Password',
                         'Your password is: '.$pass);
 
-            $_SESSION['msg']['reg-success']='We sent you an email with your new password!';
+            $_SESSION['msg']['reg-success']='Gracias por registrarse.';
         }
-        else $err[]='This username is already taken!';
+
+        else $err[]='¡Este email ya esta en uso!';
     }
 
     if(count($err))
@@ -140,7 +144,7 @@ else if($_POST['submit']=='Register')
         $_SESSION['msg']['reg-err'] = implode('<br />',$err);
     }   
     
-    header("Location: demo.php");
+    header("Location: index.php");
     exit;
 }
 
@@ -235,8 +239,8 @@ if($_SESSION['msg'])
                         }
                     ?>
                     
-                    <label class="grey" for="username">Usuario:</label>
-                    <input class="field" type="text" name="username" id="username" value="" size="23" />
+                    <label class="grey" for="usuario">Usuario:</label>
+                    <input class="field" type="text" name="usuario" id="usuario" value="" size="23" />
                     <label class="grey" for="password">Clave:</label>
                     <input class="field" type="password" name="password" id="password" size="23" />
                     <label><input name="rememberMe" id="rememberMe" type="checkbox" checked="checked" value="1" /> &nbsp;Recordarme</label>
@@ -264,8 +268,8 @@ if($_SESSION['msg'])
                         }
                     ?>
                             
-                <!--<label class="grey" for="username">Username:</label>
-                    <input class="field" type="text" name="username" id="username" value="" size="23" />
+                <!--<label class="grey" for="usuario">usuario:</label>
+                    <input class="field" type="text" name="usuario" id="usuario" value="" size="23" />
                 -->
                 <table>
                     <tr>
@@ -289,7 +293,7 @@ if($_SESSION['msg'])
                             <input class="field" type="text" name="telefono" id="telefono" value="" size="23" />                       
 
                             
-                            <label class="grey" for="razon">Sexo:</label>
+                            <label class="grey" for="sexo">Sexo:</label>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <input class="field" type="radio" name="sexo" id="sexo" value="Masculino" />Masculino
                             &nbsp;&nbsp;&nbsp;&nbsp;
@@ -322,7 +326,11 @@ if($_SESSION['msg'])
             <a href="registered.php">View a special member page</a>
             <p>- or -</p>
             <a href="?logoff">Log off</a>
-            
+            <?
+                if($_SESSION['estatus'] == '0'){
+                    header('Location: admin.php');
+                }
+            ?>
             
             </div>
             
@@ -339,10 +347,10 @@ if($_SESSION['msg'])
     <div class="tab">
         <ul class="login">
             <li class="left">&nbsp;</li>
-            <li>Bienvenido <?php echo $_SESSION['usr'] ? $_SESSION['usr'] : '';?></li>
+            <li>Bienvenido <?php echo $_SESSION['usuario'] ? $_SESSION['usuario'] : '';?></li>
             <li class="sep">|</li>
             <li id="toggle">
-                <a id="open" class="open" href="#"><?php echo $_SESSION['id']?'Open Panel':'Entrar| Regístrate';?></a>
+                <a id="open" class="open" href="#"><?php echo $_SESSION['id']?'Abrir Panel':'Entrar| Regístrate';?></a>
                 <a id="close" style="display: none;" class="close" href="#">Cerrar Panel</a>         
             </li>
             <li class="right">&nbsp;</li>
@@ -350,6 +358,10 @@ if($_SESSION['msg'])
     </div> <!-- / top -->
     
 </div> <!--panel -->
+
+
+
+
 
 	<!--==============================header=================================-->
     <header>
