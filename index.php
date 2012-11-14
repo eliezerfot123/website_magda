@@ -168,33 +168,33 @@ if($_SESSION['msg'])
 <head>
     <title></title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="css/reset.css" type="text/css" media="screen">
-    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
-    <link rel="stylesheet" href="css/grid.css" type="text/css" media="screen"> 
-    <script src="js/jquery-1.6.2.min.js" type="text/javascript"></script>
-    <script src="js/jquery.galleriffic.js" type="text/javascript"></script>
-    <script src="js/jquery.opacityrollover.js" type="text/javascript"></script>      
+    <link rel="stylesheet" href="static/css/reset.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="static/css/style.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="static/css/grid.css" type="text/css" media="screen"> 
+    <script src="static/js/jquery-1.6.2.min.js" type="text/javascript"></script>
+    <script src="static/js/jquery.galleriffic.js" type="text/javascript"></script>
+    <script src="static/js/jquery.opacityrollover.js" type="text/javascript"></script>      
 	<!--[if lt IE 7]>
         <div style=' clear: both; text-align:center; position: relative;'>
             <a href="http://www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode"><img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0"  alt="" /></a>
         </div>
 	<![endif]-->
     <!--[if lt IE 9]>
-   		<script type="text/javascript" src="js/html5.js"></script>
-        <link rel="stylesheet" href="css/ie.css" type="text/css" media="screen">
+   		<script type="text/javascript" src="static/js/html5.js"></script>
+        <link rel="stylesheet" href="static/css/ie.css" type="text/css" media="screen">
 	<![endif]-->
 
-    <link rel="stylesheet" type="text/css" href="demo.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="login_panel/css/slide.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="static/demo.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="static/login_panel/css/slide.css" media="screen" />
     
     
     <!-- PNG FIX for IE6 -->
     <!-- http://24ways.org/2007/supersleight-transparent-png-in-ie6 -->
     <!--[if lte IE 6]>
-        <script type="text/javascript" src="login_panel/js/pngfix/supersleight-min.js"></script>
+        <script type="text/javascript" src="static/login_panel/js/pngfix/supersleight-min.js"></script>
     <![endif]-->
     
-    <script src="login_panel/js/slide.js" type="text/javascript"></script>
+    <script src="static/login_panel/js/slide.js" type="text/javascript"></script>
     
     <?php echo $script; ?>
 
@@ -415,22 +415,22 @@ if($_SESSION['msg'])
                                     <div id="thumbs" class="navigation">
                                         <ul class="thumbs noscript">
                                             <li>
-                                                <a class="thumb" href="images/gallery-img1.jpg" title=""> <img src="images/thumb-1.jpg" alt="" /><span></span> </a>
+                                                <a class="thumb" href="static/images/gallery-img1.jpg" title=""> <img src="static/images/thumb-1.jpg" alt="" /><span></span> </a>
                                             </li> 
                                             <li>
-                                                <a class="thumb" href="images/gallery-img2.jpg" title=""> <img src="images/thumb-2.jpg" alt="" /> <span></span></a>
+                                                <a class="thumb" href="static/images/gallery-img2.jpg" title=""> <img src="static/images/thumb-2.jpg" alt="" /> <span></span></a>
                                             </li> 
                                             <li>
-                                                <a class="thumb" href="images/gallery-img3.jpg" title=""> <img src="images/thumb-3.jpg" alt="" /> <span></span></a>
+                                                <a class="thumb" href="static/images/gallery-img3.jpg" title=""> <img src="static/images/thumb-3.jpg" alt="" /> <span></span></a>
                                             </li> 
                                             <li>
-                                                <a class="thumb" href="images/gallery-img4.jpg" title=""> <img src="images/thumb-4.jpg" alt="" /> <span></span></a>
+                                                <a class="thumb" href="static/images/gallery-img4.jpg" title=""> <img src="static/images/thumb-4.jpg" alt="" /> <span></span></a>
                                             </li> 
                                             <li>
-                                                <a class="thumb" href="images/gallery-img5.jpg" title=""> <img src="images/thumb-5.jpg" alt="" /> <span></span></a>
+                                                <a class="thumb" href="static/images/gallery-img5.jpg" title=""> <img src="static/images/thumb-5.jpg" alt="" /> <span></span></a>
                                             </li> 
                                             <li>
-                                                <a class="thumb" href="images/gallery-img6.jpg" title=""> <img src="images/thumb-6.jpg" alt="" /> <span></span></a>
+                                                <a class="thumb" href="static/images/gallery-img6.jpg" title=""> <img src="static/images/thumb-6.jpg" alt="" /> <span></span></a>
                                             </li>           
                                         </ul>
                                     </div>
@@ -450,7 +450,7 @@ if($_SESSION['msg'])
                                     	<h3 class="color-1">Our Services List</h3>
                                         <div class="wrapper">
                                         	<article class="grid_6 alpha">
-                                                <figure class="img-indent frame"><img src="images/page1-img1.jpg" alt="" /></figure>
+                                                <figure class="img-indent frame"><img src="static/images/page1-img1.jpg" alt="" /></figure>
                                                 <div class="extra-wrap">
                                                     <div class="indent-top">
                                                         <ul class="list-1">
@@ -462,7 +462,7 @@ if($_SESSION['msg'])
                                                 <div class="clear"></div>
                                             </article>
                                             <article class="grid_6 omega">
-                                                <figure class="img-indent frame"><img src="images/page1-img2.jpg" alt="" /></figure>
+                                                <figure class="img-indent frame"><img src="static/images/page1-img2.jpg" alt="" /></figure>
                                                 <div class="extra-wrap">
                                                     <div class="indent-top">
                                                         <ul class="list-1">
