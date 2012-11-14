@@ -376,15 +376,15 @@ if($_SESSION['msg'])
             	<div class="container_12">
                 	<div class="grid_9">
                     	<h1>
-                            <a class="logo" href="index.html">Int<strong>e</strong>rior</a>
-                            <span>Design</span>
+                            <a class="logo" href="index.html">PUNTO<strong>-ALTERSANAL</strong></a>
+                            <span> Magdaleno</span>
                         </h1>
                     </div>
                     <div class="grid_3">
                     	<form id="search-form" method="post" enctype="multipart/form-data">
                             <fieldset>	
                                 <div class="search-field">
-                                    <input name="search" type="text" />
+                                    <input name="search" type="text" onfocus="if(this.value=='busqueda') this.value='';" onblur="if(this.value=='') this.value='busqueda';"/>
                                     <a class="search-button" href="#" onClick="document.getElementById('search-form').submit()"><span>search</span></a>	
                                 </div>						
                             </fieldset>
