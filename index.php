@@ -388,15 +388,15 @@ if($_SESSION['msg'])
             	<div class="container_12">
                 	<div class="grid_9">
                     	<h1>
-                            <a class="logo" href="index.html">Int<strong>e</strong>rior</a>
-                            <span>Design</span>
+                            <a class="logo" href="index.html">PUNTO<strong>-ALTERSANAL</strong></a>
+                            <span> Magdaleno</span>
                         </h1>
                     </div>
                     <div class="grid_3">
                     	<form id="search-form" method="post" enctype="multipart/form-data">
                             <fieldset>	
                                 <div class="search-field">
-                                    <input name="search" type="text" />
+                                    <input name="search" type="text" onfocus="if(this.value=='busqueda') this.value='';" onblur="if(this.value=='') this.value='busqueda';"/>
                                     <a class="search-button" href="#" onClick="document.getElementById('search-form').submit()"><span>search</span></a>	
                                 </div>						
                             </fieldset>
@@ -530,12 +530,12 @@ if($_SESSION['msg'])
         	<div class="container_12">
             	<div class="wrapper">
                 	<div class="grid_4">
-                    	<div>Interior Design &copy; 2011 <a class="link color-3" href="#">Privacy Policy</a></div>
-                        <div><a rel="nofollow" target="_blank" href="http://www.templatemonster.com/">Website Template</a> by TemplateMonster.com | <a rel="nofollow" target="_blank" href="http://www.html5xcss3.com/">html5xcss3.com</a></div>
+                    	<div>Desarrollo Web  <a class="link color-3" href="#">Politicas de Privacidad</a></div>
+                        <div><a rel="nofollow" target="_blank" href="#">Página Web</a> por J.E.D | <a rel="nofollow" target="_blank" href="#">WebSite-Magdaleno</a></div>
                         <!-- {%FOOTER_LINK} -->
                     </div>
                     <div class="grid_4">
-                    	<span class="phone-numb"><span>+1(800)</span> 123-1234</span>
+                    	<span class="phone-numb"><span>+58</span> 0244-0000000</span>
                     </div>
                     <div class="grid_4">
                     	<ul class="list-services">
